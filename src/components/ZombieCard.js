@@ -208,11 +208,13 @@ const ZombieCard = (props) => {
                     {zombie.name}
                   </Typography>
                 </Box>
-                {zombie.level > 1 ? <Box>{editNameBtn}</Box> : ""}
+                {zombie.level >= 20 ? <Box>{editNameBtn}</Box> : ""}
               </>
             )}
           </Box>
           <Typography color="textSecondary" component="p">
+            ID: {zombie.id}
+            <br />
             Level: {zombie.level}
             <br />
             DNA: {zombie.dna}

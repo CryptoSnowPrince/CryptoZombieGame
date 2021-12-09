@@ -1,6 +1,7 @@
 import { useWeb3React } from "@web3-react/core";
 import { useState, useEffect, useRef } from "react";
 // import { ABI, address } from "./config.js";
+import address from "./contract_address";
 import { Typography, Button } from "@mui/material";
 import ZombieCard from "./ZombieCard.js";
 import Box from "@mui/material/Box";
@@ -8,7 +9,7 @@ import status from "./ZombieStatus";
 
 // custom+ start
 const ABI = require("../contracts/ZombieOwnership.json").abi;
-const address = "Your_Contract_Address";
+// const address = "Your_Contract_Address";
 // custom+ end
 
 function CryptoZombies() { 
@@ -27,20 +28,18 @@ function CryptoZombies() {
     setIsFetchingArmy(true);
     setArmy([]);
     getZombiesByOwner(account).then((zombieIds) => {
-      console.log("hello");
-      // console.log({ zombieIds });
-      console.log(zombieIds.length);
+      console.log("pass"+zombieIds.length);
       if (zombieIds.length === 0) {
         // custom +
         console.log("pass if");
-        createRandomZombie("CryptoZombie" + Math.floor((Math.random() * 1000000000).toString(8)));
+        createRandomZombie("CryptoZombie" + Math.floor((Math.random() * 1000).toString(8)));
         // custom -
       }
       console.log("pass else");
       // zombieIds.ABI.zombies.
       zombieIds.forEach((zombieId) => {
         getZombieDetails(zombieId).then((zombieDetails) => {
-          console.log({zombieDetails});
+          console.log(zombieId);
           zombieDetails.id = zombieId;
           zombieDetails.status = status.READY;
           setArmy((prevArmy) => [...prevArmy, zombieDetails]);
