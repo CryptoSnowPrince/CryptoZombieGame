@@ -153,19 +153,19 @@ function CryptoZombies() {
     updateZombieAttributes({...zombie, status: status.ATTACKING});
     // custom +
     // Get total number of zombies
-    const numZombies = await cryptoZombies.methods.totalZombies.call((e, num) => {
-      return num;
-    });
-    // Get a random zombie until the owner of that zombie is not the current user
-    let targetZombieOwner = null;
-    let randZombieId = 3;//null;
-    do {
-      randZombieId = Math.floor(Math.random() * numZombies);
-      targetZombieOwner = await cryptoZombies.methods.zombieToOwner(randZombieId).call((e, owner) => {
-        return owner;
-      });
-    }
-    while (targetZombieOwner === account);
+    // const numZombies = await cryptoZombies.methods.totalZombies.call((e, num) => {
+    //   return num;
+    // });
+    // // Get a random zombie until the owner of that zombie is not the current user
+    // let targetZombieOwner = null;
+    let randZombieId = 2;//null;
+    // do {
+    //   randZombieId = Math.floor(Math.random() * numZombies);
+    //   targetZombieOwner = await cryptoZombies.methods.zombieToOwner(randZombieId).call((e, owner) => {
+    //     return owner;
+    //   });
+    // }
+    // while (targetZombieOwner === account);
 
     // Attack that random enemy zombie
     // custom -

@@ -18,6 +18,8 @@ export default function Home(props) {
   const { toggleTheme } = props;
   const theme = useTheme();
   const { active, account, activate, deactivate } = useWeb3React();
+  var show_account_addr = account + "";
+  show_account_addr = show_account_addr.substring(0, 5) + "..." + show_account_addr.substring(show_account_addr.length - 4, show_account_addr.length);
 
   async function connect() {
     try {
@@ -69,7 +71,7 @@ export default function Home(props) {
           {active ? (
             <div style={{ float: "right", textAlign: "right" }}>
               <span>
-                Connected with <b>{account}</b>
+                Connected with <b>{/*account*/show_account_addr}</b>
               </span>
               <br />
               <Button onClick={disconnect}>Disconnect</Button>
